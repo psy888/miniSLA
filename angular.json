@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "miniSLA"
+    }
+  },
+  "defaultProject": "miniSLA",
+  "cli": {
+    "analytics": false
+  }
 }

@@ -1,0 +1,19 @@
+<mat-drawer-container id="drawer" class="mat-drawer-container root-container" autosize>
+  <mat-drawer #drawer class="main-menu" mode="side">
+    <app-main-menu></app-main-menu>
+  </mat-drawer>
+  <div class="main-menu-toggle">
+    <button  mat-icon-button (click)="drawer.toggle()" type="button" color="prinary">
+      <mat-icon *ngIf="!drawer.opened">menu</mat-icon>
+      <mat-icon *ngIf="drawer.opened">close</mat-icon>
+    </button>
+  </div>
+
+
+  <router-outlet></router-outlet>
+
+
+
+</mat-drawer-container>
+
+
