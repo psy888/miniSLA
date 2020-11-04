@@ -1,2 +1,19 @@
 <p>main-menu works!</p>
 
+
+<mat-list>
+  <mat-list-item *ngIf="isAuthenticated()">
+     <div class="main-menu-item user-info">
+       <mat-icon class="user-info-icon" aria-hidden="false">person</mat-icon>
+       <p class="user-info-name"><strong>{{getUser().name}}</strong></p>
+     </div>
+  </mat-list-item>
+  <mat-list-item *ngIf="isAuthenticated()">
+    <a  class="main-menu-item" mat-button (click)="logout()" >
+      Выход
+    </a>
+  </mat-list-item>
+  <mat-list-item *ngIf="!isAuthenticated()">
+    <a  href="#" class="main-menu-item" mat-button [routerLink]="['/login']">Вход/Регистрация</a>
+  </mat-list-item>
+</mat-list>

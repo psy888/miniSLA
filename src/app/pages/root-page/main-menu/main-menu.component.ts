@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService, User } from 'src/app/shared/services/auth.service';
 
 
 @Component({
@@ -9,14 +10,20 @@ import { Component, OnInit } from '@angular/core';
 export class MainMenuComponent implements OnInit {
 
 
-
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
   }
 
-  drawerToggle(): void {
-    // drawer.toggle();
+  logout(): void {
+    this.authService.logout();
   }
 
+  isAuthenticated(): boolean {
+    return this.authService.isAuthenticated();
+  }
+
+  getUser(): User {
+    return this.authService.getUser();
+  }
 }

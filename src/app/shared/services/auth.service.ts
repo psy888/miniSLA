@@ -4,7 +4,7 @@ import { url } from 'src/app/shared/endpoints';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 
-interface User {
+export interface User {
   name: string;
   email: string;
 }
@@ -25,7 +25,6 @@ export class AuthService {
 
   getUser(): User {
     const tok = localStorage.getItem(this.tokenKey);
-    console.log(tok);
     return this.jwtService.decodeToken(tok);
   }
 
