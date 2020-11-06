@@ -1,0 +1,68 @@
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="devices" matSort class="data-list-table">
+
+<!--    <ng-container matColumnDef="id">-->
+<!--      <th mat-header-cell *matHeaderCellDef style="display: none">ID</th>-->
+<!--      <td mat-cell *matCellDef="let element"  style="display: none">{{element.id}}</td>-->
+<!--    </ng-container>-->
+
+    <!--  name column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Название</th>
+      <td mat-cell *matCellDef="let element">{{element.name}}</td>
+    </ng-container>
+
+    <!--  series column -->
+    <ng-container matColumnDef="series">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Серия</th>
+      <td mat-cell *matCellDef="let element">{{element.series}}</td>
+    </ng-container>
+
+    <!--  ip column -->
+    <ng-container matColumnDef="ip">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>IP</th>
+      <td mat-cell *matCellDef="let element">{{element.ip}}</td>
+    </ng-container>
+
+    <!--  regDate column -->
+    <ng-container matColumnDef="regDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Дата рег.</th>
+      <td mat-cell *matCellDef="let element">{{element.regDate | date: 'short'}}</td>
+    </ng-container>
+
+    <!--  state column -->
+    <ng-container matColumnDef="state">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Состояние подключения</th>
+      <td mat-cell *matCellDef="let element">
+        <mat-icon>{{getConnectionStateIcon(element.state)}}</mat-icon>
+      </td>
+    </ng-container>
+
+    <!--  workingCondition column -->
+    <ng-container matColumnDef="workingCondition">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Включен</th>
+      <td mat-cell *matCellDef="let element">
+        <mat-icon *ngIf="element.workingCondition">power</mat-icon>
+        <mat-icon *ngIf="!element.workingCondition">power_off</mat-icon>
+      </td>
+    </ng-container>
+
+    <!--  procFrequency column -->
+    <ng-container matColumnDef="procFrequency">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>ЦП MHz</th>
+      <td mat-cell *matCellDef="let element">{{element.procFrequency}}</td>
+    </ng-container>
+
+    <!--  ramMb column -->
+    <ng-container matColumnDef="ramMb">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>RAM</th>
+      <td mat-cell *matCellDef="let element">{{element.ramMb}}</td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="selectRow(row)"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLastButtons></mat-paginator>
+</div>
