@@ -1,19 +1,33 @@
-<p>main-menu works!</p>
-
-
 <mat-list>
-  <mat-list-item *ngIf="isAuthenticated()">
-     <div class="main-menu-item user-info">
-       <mat-icon class="user-info-icon" aria-hidden="false">person</mat-icon>
-       <p class="user-info-name"><strong>{{getUser().name}}</strong></p>
-     </div>
+  <mat-list-item *ngIf="isAuthenticated()" class="main-menu--item">
+    <div class="user-info">
+      <div class="user-info--details">
+        <span><strong>{{getUser().name}}</strong></span>
+        <span class="mat-caption">{{getUser().email}}</span>
+      </div>
+    </div>
   </mat-list-item>
-  <mat-list-item *ngIf="isAuthenticated()">
-    <a  class="main-menu-item" mat-button (click)="logout()" >
-      Выход
+  <mat-list-item *ngIf="!isAuthenticated()" class="main-menu--item">
+    <a class="main-menu--item--link" href="#" mat-button [routerLink]="['/login']" routerLinkActive="main-menu--item--active">
+      <mat-icon class="main-menu--item--icon">login</mat-icon>
+      <span>Вход/Регистрация</span>
     </a>
   </mat-list-item>
-  <mat-list-item *ngIf="!isAuthenticated()">
-    <a  href="#" class="main-menu-item" mat-button [routerLink]="['/login']">Вход/Регистрация</a>
-  </mat-list-item>
+
+  <!--Authorized section-->
+  <div *ngIf="isAuthenticated()">
+    <mat-list-item class="main-menu--item">
+      <a class="main-menu--item--link" href="#" mat-button [routerLink]="['/list']" routerLinkActive="main-menu--item--active">
+        <mat-icon class="main-menu--item--icon">list</mat-icon>
+        <span>Список устройств</span>
+      </a>
+    </mat-list-item>
+
+    <mat-list-item class="main-menu--item">
+      <a class="main-menu--item--link" mat-button (click)="logout()" [routerLink]="['/login']" routerLinkActive="main-menu--item--active">
+        <mat-icon class="main-menu--item--icon">directions_walk</mat-icon>
+        <span>Выход</span>
+      </a>
+    </mat-list-item>
+  </div>
 </mat-list>
