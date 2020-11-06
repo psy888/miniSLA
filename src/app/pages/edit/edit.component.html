@@ -1,0 +1,72 @@
+<form [formGroup]="deviceForm" (ngSubmit)="submit()" class="edit-form">
+  <div class="edit-form--group">
+    <mat-form-field class="edit-form--group--field">
+      <mat-label>Название</mat-label>
+      <input formControlName="name" matInput placeholder="Название"/>
+      <mat-error *ngIf="deviceForm.controls.name.hasError('required')">Обязательное поле!</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="edit-form--group--field">
+      <mat-label>Серия устройства</mat-label>
+      <input type="text" placeholder="Серия" matInput formControlName="series" [matAutocomplete]="series">
+      <mat-autocomplete autoActiveFirstOption #series="matAutocomplete">
+        <mat-option *ngFor="let option of filterOptions | async;" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+      <mat-error *ngIf="deviceForm.controls.series.invalid">Не верная серия</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="edit-form--group--field">
+      <mat-label>Дата регистрации</mat-label>
+      <input matInput [matDatepicker]="regDate" formControlName="regDate">
+      <mat-datepicker-toggle matSuffix [for]="regDate"></mat-datepicker-toggle>
+      <mat-datepicker #regDate></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <div class="edit-form--group">
+    <mat-form-field class="edit-form--group--field">
+      <mat-label>Описание</mat-label>
+      <textarea #descr maxlength="255" formControlName="description" matInput placeholder="Описание устройства"></textarea>
+      <mat-hint align="end">{{descr.value.length}} / 255</mat-hint>
+    </mat-form-field>
+  </div>
+
+  <div class="edit-form--group">
+    <mat-form-field class="edit-form--group--field">
+      <mat-label>Состояние устройства</mat-label>
+      <mat-select formControlName="state">
+        <mat-option *ngFor="let state of statesArr; let idx = index" [value]="idx">
+          {{state}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-checkbox  class="edit-form--group--field" [formControlName]="'workingCondition'">Включено</mat-checkbox>
+
+  </div>
+
+
+  <div class="edit-form--group">
+
+    <mat-form-field class="edit-form--group--field">
+      <mat-label>IP</mat-label>
+      <input formControlName="ip" matInput placeholder="IP адрес"/>
+      <mat-error *ngIf="deviceForm.controls.ip.invalid">Не верный формат IP адреса</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="edit-form--group--field">
+      <mat-label>ЦП MHz</mat-label>
+      <input type="number" formControlName="procFrequency" matInput/>
+      <mat-error *ngIf="deviceForm.controls.procFrequency.invalid">Только число '####', не больше 64 гб</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="edit-form--group--field">
+      <mat-label>RAM</mat-label>
+      <input type="number" formControlName="ramMb" matInput/>
+      <mat-error *ngIf="deviceForm.controls.ramMb.invalid">Кратно 8</mat-error>
+    </mat-form-field>
+
+  </div>
+</form>
