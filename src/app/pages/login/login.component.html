@@ -1,18 +1,20 @@
 <form class="login-form" [formGroup]="authForm" (ngSubmit)="submit()">
-  <mat-form-field class="login-form-input">
+  <mat-form-field class="login-form--input">
     <mat-label>E-mail</mat-label>
     <input matInput formControlName="email" placeholder="enter email">
     <mat-error *ngIf="authForm.get('email').hasError('required')">Обязательное поле!</mat-error>
     <mat-error *ngIf="authForm.get('email').hasError('email')">Введите корректный email</mat-error>
+    <mat-error *ngIf="authForm.get('email').hasError('server_error')">Пользователь с таким email не зарегистрирован!</mat-error>
   </mat-form-field>
-  <mat-form-field class="login-form-input">
+  <mat-form-field class="login-form--input">
     <mat-label>Password</mat-label>
     <input matInput type="password" formControlName="password" placeholder="enter password">
     <mat-error *ngIf="authForm.get('password').hasError('required')">Обязательное поле!</mat-error>
+    <mat-error *ngIf="authForm.get('password').hasError('server_error')">Неверный пароль!</mat-error>
   </mat-form-field>
-  <mat-checkbox class="login-form-input" (change)="isNewUser = !isNewUser">Новый пользователь?</mat-checkbox>
+  <mat-checkbox class="login-form--input" (change)="isNewUser = !isNewUser">Новый пользователь?</mat-checkbox>
   <div class="login-form-input">
-    <button mat-raised-button color="primary" [disabled]="authForm.invalid" class="login-form-submit">
+    <button mat-raised-button color="primary" [disabled]="authForm.invalid" class="login-form--submit">
       <span>{{isNewUser ? 'Регистрация' : 'Вход'}}</span>
     </button>
   </div>
