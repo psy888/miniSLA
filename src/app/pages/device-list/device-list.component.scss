@@ -1,3 +1,10 @@
+@import "src/styles.scss";
+
+$accent: map-get($miniSLA-light-theme, accent);
+$warn: map-get($miniSLA-light-theme, warn);
+$foreground: map-get($miniSLA-light-theme, foreground);
+$background: map-get($miniSLA-light-theme, background);
+
 .content-container {
   display: flex;
   flex-flow: row wrap;
@@ -8,7 +15,7 @@
   .hidden-columns {
     display: flex;
 
-    &--btn{
+    &--btn {
       margin-right: 1rem;
     }
   }
@@ -22,10 +29,10 @@
 
       &--link {
         font-size: 1rem;
-        color: gray;
+        color: mat-color($foreground);
 
         &:hover {
-          color: red;
+          color: mat-color($warn);
           cursor: pointer;
         }
       }

@@ -37,7 +37,7 @@ export class DeviceListComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.loadingState.startLoadig();
+    this.loadingState.startLoading();
     this.deviceService.getDevices().subscribe(value => {
       this.devices = new MatTableDataSource<Device>(value);
       this.devices.sort = this.sort;
