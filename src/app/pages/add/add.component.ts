@@ -77,7 +77,7 @@ export class AddComponent implements OnInit {
       }
       if (key === 'series') {
         // @ts-ignore
-        this.editableDevice.series = Series[this.deviceForm.controls[key].value];
+        this.newDevice.series = Series[this.deviceForm.controls[key].value];
       }
     }
     this.deviceService.addDevice(this.newDevice);
