@@ -21,11 +21,11 @@ export class AddComponent implements OnInit {
   maxDate = new Date();
 
   newDevice: Device = {
-    name: undefined,
-    description: undefined,
+    name: '',
+    description: '',
     series: undefined,
-    regDate: undefined,
-    ip: undefined,
+    regDate: new Date(),
+    ip: '',
     workingCondition: undefined,
     ramMb: undefined,
     state: undefined,
@@ -48,7 +48,7 @@ export class AddComponent implements OnInit {
     this.deviceForm = new FormGroup({
       name: new FormControl('', Validators.required),
       ip: new FormControl('', Validators.pattern('^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$')),
-      regDate: new FormControl('', futureDate),
+      regDate: new FormControl(new Date(), futureDate),
       description: new FormControl('', Validators.maxLength(255)),
       state: new FormControl(''),
       workingCondition: new FormControl(''),

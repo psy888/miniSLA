@@ -11,7 +11,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { EditRoutingModule } from 'src/app/pages/edit/edit-routing.module';
+
+import { AddRoutingModule } from './add-routing.module';
 import { AddComponent } from './add.component';
 
 
@@ -19,7 +20,7 @@ import { AddComponent } from './add.component';
   declarations: [AddComponent],
   imports: [
     CommonModule,
-    EditRoutingModule,
+    AddRoutingModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
