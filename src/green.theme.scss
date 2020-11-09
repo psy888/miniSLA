@@ -12,18 +12,15 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-//$miniSLA-primary: mat-palette($mat-indigo);
-//$miniSLA-accent: mat-palette($mat-pink, A200, A100, A400);
-
-// The warn palette is optional (defaults to red).
-//$miniSLA-warn: mat-palette($mat-red);
-
 $miniSLA-primary: mat-palette($mat-green);
 $miniSLA-accent: mat-palette($mat-orange, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
 $miniSLA-warn: mat-palette($mat-deep-orange);
+
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$miniSLA-theme: mat-light-theme((
+$miniSLA-green-theme: mat-light-theme((
   color: (
     primary: $miniSLA-primary,
     accent: $miniSLA-accent,
@@ -31,10 +28,11 @@ $miniSLA-theme: mat-light-theme((
   )
 ));
 
+
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include angular-material-theme($miniSLA-theme);
+@include angular-material-theme($miniSLA-green-theme);
 
 /* You can add global styles to this file, and also import other style files */
 

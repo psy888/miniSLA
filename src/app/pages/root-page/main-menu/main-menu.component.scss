@@ -1,33 +1,35 @@
-.main-menu{
+@import "src/styles.scss";
 
-  &--item{
+$primary: map-get($miniSLA-theme, primary);
+$accent: map-get($miniSLA-theme, accent);
+.main-menu {
+
+  &--item {
     margin-bottom: .5rem;
 
-    &--link{
+    &--link {
       width: 100%;
       display: flex;
       flex-direction: inherit;
     }
 
-    &--active{
+    &--active {
       font-weight: bold;
-      background: palegreen;
+      background: mat-color($accent);
     }
 
-    &:hover{
-      color: green;
-    }
 
-    &--icon{
+
+    &--icon {
       margin-right: 1rem;
     }
   }
 }
 
-.user-info{
+.user-info {
   width: 100%;
 
-  &--details{
+  &--details {
     padding: 1rem;
     margin: 0;
     font-size: 14pt;
