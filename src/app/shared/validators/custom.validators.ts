@@ -15,3 +15,10 @@ export const ramValidation: ValidatorFn = (control: FormControl): ValidationErro
   return { error: true };
 
 };
+
+export const futureDate: ValidatorFn = (control: FormControl): ValidationErrors | null => {
+  if (control.value.getTime() < Date.now()) {
+    return null;
+  }
+  return { error: true };
+};

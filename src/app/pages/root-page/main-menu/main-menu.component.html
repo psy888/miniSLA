@@ -24,6 +24,20 @@
     </mat-list-item>
 
     <mat-list-item class="main-menu--item">
+      <a class="main-menu--item--link" href="#" mat-button [routerLink]="['/edit']" routerLinkActive="main-menu--item--active">
+        <mat-icon class="main-menu--item--icon">edit</mat-icon>
+        <span>Редактировать</span>
+      </a>
+    </mat-list-item>
+
+    <mat-list-item class="main-menu--item">
+      <a class="main-menu--item--link" href="#" mat-button [routerLink]="['/add']" routerLinkActive="main-menu--item--active">
+        <mat-icon class="main-menu--item--icon">add_circle_outline</mat-icon>
+        <span>Добавить</span>
+      </a>
+    </mat-list-item>
+
+    <mat-list-item class="main-menu--item">
       <a class="main-menu--item--link" mat-button (click)="logout()" [routerLink]="['/login']" routerLinkActive="main-menu--item--active">
         <mat-icon class="main-menu--item--icon">directions_walk</mat-icon>
         <span>Выход</span>

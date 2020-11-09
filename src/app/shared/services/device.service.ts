@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { url } from 'src/app/shared/endpoints';
 import { LoadingStateService } from 'src/app/shared/services/loading-state.service';
 
@@ -18,7 +18,7 @@ export enum Series {
 }
 
 export interface Device {
-  readonly id: number; // not editable
+  id: number; // not editable
   name: string; // input
   ip: string; // input with ip validation
   regDate: Date; // datePicker
@@ -30,12 +30,24 @@ export interface Device {
   ramMb: number; // radio btn
 }
 
+export enum DeviceColumns {
+  name = 'Название',
+  ip = 'IP',
+  regDate = 'Дата рег.',
+  state = 'В сети',
+  workingCondition = 'Включен',
+  series = 'Серия',
+  procFrequency = 'ЦП MHz',
+  ramMb = 'RAM'
+}
+
+
 @Injectable({
   providedIn: 'root',
 })
 export class DeviceService {
 
-  lastEdited: Device;
+  lastModified: Device;
 
   constructor(private http: HttpClient,
               private loadingState: LoadingStateService,
@@ -46,9 +58,19 @@ export class DeviceService {
   }
 
   editDevice(device: Device): void {
-    this.lastEdited = device;
+    localStorage.setItem('lastModified', device.id.toString());
+    this.lastModified = device;
     this.router.navigate(['/edit']);
   }
+
+  getLastModified(): Observable<Device> {
+    if (!!this.lastModified) {
+      return new BehaviorSubject(this.lastModified);
+    }
+    const id = localStorage.getItem('lastModified');
+    return this.getDeviceById(id);
+  }
+
 
   updateDevice(device: Device): Observable<any> {
     return this.http.post(url.update, device);
@@ -57,4 +79,14 @@ export class DeviceService {
   addDevice(device: Device): void {
     this.http.post(url.add, device);
   }
+
+  private getDeviceById(id: string): Observable<Device> {
+    if (!!id) {
+      console.log('id', id);
+      return this.http.get<Device>(url.deviceById + id);
+    }
+
+    return null;
+  }
+
 }

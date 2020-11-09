@@ -2,8 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
-import { Device, DeviceService, State } from 'src/app/shared/services/device.service';
+import { Device, DeviceColumns, DeviceService, Series, State } from 'src/app/shared/services/device.service';
 import { LoadingStateService } from 'src/app/shared/services/loading-state.service';
 
 @Component({
@@ -16,12 +15,26 @@ export class DeviceListComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   devices: MatTableDataSource<Device>;
-  columns: string[] = ['name', 'ip', 'regDate', 'state', 'workingCondition', 'series', 'procFrequency', 'ramMb'];
-  displayedColumns = this.columns.slice();
+  columnLabels = DeviceColumns;
+  columns: string[];
+  displayedColumns;
+  hiddenColumns: string[] = [];
+  seriesEnum = Series;
 
 
   constructor(private deviceService: DeviceService,
-              private loadingState: LoadingStateService) { }
+              private loadingState: LoadingStateService) {
+    this.columns = this.deviceColumns();
+    this.displayedColumns = this.columns.slice();
+  }
+
+  private deviceColumns(): string[] {
+    let colArr = [];
+    for (let col in this.columnLabels) {
+      colArr.push(col);
+    }
+    return colArr;
+  }
 
   ngOnInit(): void {
     this.loadingState.startLoadig();
@@ -49,11 +62,23 @@ export class DeviceListComponent implements OnInit, AfterViewInit {
     }
   }
 
-  removeColumn(columnName: string): void {
-    this.displayedColumns = this.displayedColumns.filter(value => value !== columnName);
-  }
 
   selectRow(row: any): void {
     this.deviceService.editDevice(row);
+  }
+
+  hideColumn(colName: string): void {
+    this.hiddenColumns.push(colName);
+    this.filterColumns();
+
+  }
+
+  addColumn(colName: string): void {
+    this.hiddenColumns = this.hiddenColumns.filter(value => value !== colName);
+    this.filterColumns();
+  }
+
+  private filterColumns(): void {
+    this.displayedColumns = this.columns.filter(value => this.hiddenColumns.indexOf(value) < 0);
   }
 }

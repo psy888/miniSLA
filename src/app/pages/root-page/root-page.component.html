@@ -10,7 +10,9 @@
         <mat-icon>menu</mat-icon>
       </button>
     </div>
-
+    <div class="root-container--realtime-clock">
+      <p>{{clock | date: 'hh:mm:ss'}}</p>
+    </div>
 
     <div class="root-container--content">
 
@@ -21,6 +23,7 @@
 
         <router-outlet></router-outlet>
     </div>
+
 
   </mat-sidenav-content>
 </mat-sidenav-container>

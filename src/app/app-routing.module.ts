@@ -12,7 +12,16 @@ const routes: Routes = [
     loadChildren: () => import('./pages/device-list/device-list.module').then(m => m.DeviceListModule),
     canActivate: [AuthGuard],
   },
-  { path: 'edit', loadChildren: () => import('./pages/edit/edit.module').then(m => m.EditModule) },
+  {
+    path: 'edit',
+    loadChildren: () => import('./pages/edit/edit.module').then(m => m.EditModule),
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'add',
+    loadChildren: () => import('./pages/add/add.module').then(m => m.AddModule),
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({

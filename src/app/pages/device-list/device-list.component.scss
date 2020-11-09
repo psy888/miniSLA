@@ -1,7 +1,36 @@
-.data-list-table{
-  text-align: center;
+.content-container {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: stretch;
+  padding: 1.5rem;
+  border-radius: 5px;
 
-}
-table{
-  width: 100%;
+  .hidden-columns {
+    display: flex;
+
+    &--btn{
+      margin-right: 1rem;
+    }
+  }
+
+  .table {
+    width: 100%;
+    flex-grow: 1;
+
+    &--footer {
+
+
+      &--link {
+        color: gray;
+
+        &:hover {
+          color: red;
+          cursor: pointer;
+        }
+      }
+
+    }
+  }
+
+
 }

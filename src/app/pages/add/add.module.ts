@@ -11,13 +11,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-
-import { EditRoutingModule } from './edit-routing.module';
-import { EditComponent } from './edit.component';
+import { EditRoutingModule } from 'src/app/pages/edit/edit-routing.module';
+import { AddComponent } from './add.component';
 
 
 @NgModule({
-  declarations: [EditComponent],
+  declarations: [AddComponent],
   imports: [
     CommonModule,
     EditRoutingModule,
@@ -32,6 +31,6 @@ import { EditComponent } from './edit.component';
     MatGridListModule,
     MatButtonModule,
     MatDividerModule,
-  ],
+  ]
 })
-export class EditModule {}
+export class AddModule { }
