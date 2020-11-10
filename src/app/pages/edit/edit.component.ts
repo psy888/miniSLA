@@ -30,7 +30,7 @@ export class EditComponent implements OnInit {
 
   ngOnInit(): void {
     this.initFormGroup();
-    this.loadingState.startLoadig();
+    this.loadingState.startLoading();
     this.deviceService.getLastModified().subscribe(value => {
       this.editableDevice = value;
       this.loadingState.endLoading();

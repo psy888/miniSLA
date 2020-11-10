@@ -12,7 +12,7 @@ export class LoadingStateService {
     this.curState = new BehaviorSubject<boolean>(false);
   }
 
-  public startLoadig(): void {
+  public startLoading(): void {
     this.curState.next(true);
   }
 

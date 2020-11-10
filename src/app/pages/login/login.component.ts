@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   }
 
   submit(): void {
-    this.loadingService.startLoadig();
+    this.loadingService.startLoading();
     this.authService.login(
       this.authForm.value.email,
       this.authForm.value.password,
