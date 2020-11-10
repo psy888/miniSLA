@@ -41,7 +41,7 @@ const devList: Device[] = [
     ramMb: 16,
     regDate: new Date(),
     series: Series.T1000,
-    state: State.CONNECTED,
+    state: State.DISCONNECTED,
     workingCondition: true,
   },
   {
@@ -53,7 +53,7 @@ const devList: Device[] = [
     ramMb: 16,
     regDate: new Date(),
     series: Series.T1000,
-    state: State.CONNECTED,
+    state: State.DISCONNECTED,
     workingCondition: false,
   },
   {
@@ -65,7 +65,7 @@ const devList: Device[] = [
     ramMb: 16,
     regDate: new Date(),
     series: Series.T1000,
-    state: State.CONNECTED,
+    state: State.DISCONNECTED,
     workingCondition: false,
   },
   {
