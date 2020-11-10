@@ -1,3 +1,4 @@
+<div [className]="darkTheme? 'theme-dark':'theme-light'">
 <mat-sidenav-container id="drawer" class="root-container" (backdropClick)="drawer.close()" hasBackdrop="true">
   <mat-sidenav #drawer class="root-container--main-menu" mode="side" id="menu_drawer" (keydown.escape)="drawer.close()">
     <app-main-menu></app-main-menu>
@@ -27,5 +28,5 @@
 
   </mat-sidenav-content>
 </mat-sidenav-container>
-
+</div>
 

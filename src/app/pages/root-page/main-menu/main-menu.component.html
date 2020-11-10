@@ -7,6 +7,14 @@
       </div>
     </div>
   </mat-list-item>
+
+  <mat-list-item class="main-menu--item">
+    <a class="main-menu--item--link" mat-button [routerLink]="['/info']" routerLinkActive="main-menu--item--active">
+      <mat-icon class="main-menu--item--icon">assignment</mat-icon>
+      <span>Отчет</span>
+    </a>
+  </mat-list-item>
+
   <mat-list-item *ngIf="!isAuthenticated()" class="main-menu--item">
     <a class="main-menu--item--link" href="#" mat-button [routerLink]="['/login']" routerLinkActive="main-menu--item--active">
       <mat-icon class="main-menu--item--icon">login</mat-icon>
@@ -44,4 +52,14 @@
       </a>
     </mat-list-item>
   </div>
+
+    <mat-list-item class="main-menu--item">
+      <mat-slide-toggle
+      color="accent"
+      [checked]="darkTheme"
+      (click)="toggleTheme()">
+        <mat-icon>{{darkTheme ? 'brightness_2' : 'brightness_5'}}</mat-icon>
+      </mat-slide-toggle>
+    </mat-list-item>
+
 </mat-list>

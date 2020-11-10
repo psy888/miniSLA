@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RootPageComponent } from 'src/app/pages/root-page/root-page.component';
@@ -32,6 +33,7 @@ import { MainMenuComponent } from './pages/root-page/main-menu/main-menu.compone
     MatIconModule,
     MatListModule,
     MatProgressBarModule,
+    MatSlideToggleModule
   ],
   providers: [
     AuthService,
