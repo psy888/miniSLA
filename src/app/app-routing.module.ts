@@ -22,6 +22,19 @@ const routes: Routes = [
     loadChildren: () => import('./pages/add/add.module').then(m => m.AddModule),
     canActivate: [AuthGuard],
   },
+  {
+    path: 'info',
+    loadChildren: () => import('./pages/info/info.module').then(m => m.InfoModule),
+  },
+  {
+    path: '',
+    redirectTo: 'info',
+    pathMatch: 'full'
+  },
+  {
+    path: '**',
+    redirectTo: ''
+  }
 ];
 
 @NgModule({

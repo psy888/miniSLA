@@ -1,0 +1,31 @@
+<div class="report">
+  <mat-card class="report--card mat-elevation-z8">
+
+    <mat-card-header>
+      <mat-card-title>
+        Отчет о текущем состоянии
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item class="report--total">
+          <span> Всего устройств :</span>
+          <button mat-mini-fab class="report--total--number" color="{{getNumColor(report.totalDevs)}}"> {{report.totalDevs}}</button>
+        </mat-list-item>
+
+
+        <mat-list-item class="report--total">
+          <span> Включено :</span>
+          <button mat-mini-fab class="report--total--number" color="{{getNumColor(report.workingDevs)}}"> {{report.workingDevs}}</button>
+        </mat-list-item>
+
+
+        <mat-list-item class="report--total">
+          <span>  В сети :</span>
+          <button mat-mini-fab class="report--total--number"
+                  color="{{getNumColor(report.connectedDevs)}}"> {{report.connectedDevs}}</button>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</div>

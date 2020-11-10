@@ -1,0 +1,20 @@
+.report{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &--card{
+    height: max-content;
+  }
+
+
+  &--total{
+    display: flex;
+    justify-content: flex-end;
+
+    &--number{
+      margin-left: 1rem;
+    }
+  }
+}
